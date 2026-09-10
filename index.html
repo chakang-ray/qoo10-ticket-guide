@@ -1010,8 +1010,8 @@ a { text-decoration: none; color: inherit; }
             <article class="statsCard statsCard--1">
               <div class="statsCard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
               <p class="statsCard__value">
-                <span class="statsCard__numline"><span class="statsCard__num js-stat" data-stat-key="founded">—</span><span class="statsCard__unit--sm">년</span></span>
-                <span class="statsCard__unit">6월</span>
+                <span class="statsCard__numline"><span class="statsCard__num js-stat" data-stat-key="founded">—</span><span class="statsCard__unit--sm" data-i18n="stats.items.0.unit_mid">년</span></span>
+                <span class="statsCard__unit" data-i18n="stats.items.0.unit">6월</span>
               </p>
               <p class="statsCard__lead" data-i18n="stats.items.0.lead">설립</p>
             </article>
@@ -1032,8 +1032,8 @@ a { text-decoration: none; color: inherit; }
             <article class="statsCard statsCard--3">
               <div class="statsCard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1-5h16l1 5M3 9a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0M5 9v11h14V9M9 14h6"/></svg></div>
               <p class="statsCard__value">
-                <span class="statsCard__numline"><span class="statsCard__num js-stat" data-stat-key="shops">—</span><span class="statsCard__unit--sm">만</span></span>
-                <span class="statsCard__unit">점포+</span>
+                <span class="statsCard__numline"><span class="statsCard__num js-stat" data-stat-key="shops">—</span><span class="statsCard__unit--sm" data-i18n="stats.items.2.unit_mid">만</span></span>
+                <span class="statsCard__unit" data-i18n="stats.items.2.unit">점포+</span>
               </p>
               <p class="statsCard__lead" data-i18n="stats.items.2.lead">출점 셀러수</p>
             </article>
@@ -1074,7 +1074,7 @@ a { text-decoration: none; color: inherit; }
             <article class="statsCard statsCard--2">
               <div class="statsCard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div>
               <p class="statsCard__value statsCard__value--row">
-                <span class="statsCard__num js-count js-stat" data-stat-key="kpopRanking" data-to="0">—</span><span class="statsCard__unit">위</span>
+                <span class="statsCard__num js-count js-stat" data-stat-key="kpopRanking" data-to="0">—</span><span class="statsCard__unit" data-i18n="stats.items.6.unit">위</span>
               </p>
               <p class="statsCard__lead" data-i18n="stats.items.6.lead">일본 EC KPOP 판매율</p>
             </article>
@@ -1427,9 +1427,9 @@ const I18N = {
     "hero.title": "티켓 판매의<br><em>새로운 기준</em>",
     "hero.sub": "전시, K-POP, 일본 현지 공연까지.<br>Qoo10과 함께라면 더 많은 관객에게 닿습니다.",
     "stats.label": "Numbers", "stats.title": "Qoo10이<br><em>걸어온 숫자들</em>", "stats.sub": "신뢰할 수 있는 플랫폼의 증거",
-    "stats.items.0.lead": "설립", "stats.items.0.unit": "년 6월",
+    "stats.items.0.lead": "설립", "stats.items.0.unit_mid": "년", "stats.items.0.unit": "6월",
     "stats.items.1.lead": "누적 회원수", "stats.items.1.unit": "만 명+",
-    "stats.items.2.lead": "출점 셀러수", "stats.items.2.unit": "만 점포+",
+    "stats.items.2.lead": "출점 셀러수", "stats.items.2.unit_mid": "만", "stats.items.2.unit": "점포+",
     "stats.items.3.lead": "엔터 카테고리 상품수", "stats.items.3.unit": "만 개+",
     "stats.items.4.lead": "연간 매출 성장", "stats.items.4.unit": "%",
     "stats.items.5.lead": "연간 회원 증가", "stats.items.5.unit": "%",
@@ -1456,9 +1456,9 @@ const I18N = {
     "hero.title": "チケット販売の<br><em>新しいスタンダード</em>",
     "hero.sub": "展示・K-POP・日本現地公演まで。<br>Qoo10と一緒に、より多くのお客様へ届けます。",
     "stats.label": "Numbers", "stats.title": "Qoo10が<br><em>歩んできた数字</em>", "stats.sub": "信頼できるプラットフォームの証明",
-    "stats.items.0.lead": "設立", "stats.items.0.unit": "年6月",
+    "stats.items.0.lead": "設立", "stats.items.0.unit_mid": "年", "stats.items.0.unit": "6月",
     "stats.items.1.lead": "累計会員数", "stats.items.1.unit": "万人+",
-    "stats.items.2.lead": "出店セラー数", "stats.items.2.unit": "万店舗+",
+    "stats.items.2.lead": "出店セラー数", "stats.items.2.unit_mid": "万", "stats.items.2.unit": "店舗+",
     "stats.items.3.lead": "エンタメ商品数", "stats.items.3.unit": "万点+",
     "stats.items.4.lead": "年間売上成長", "stats.items.4.unit": "%",
     "stats.items.5.lead": "年間会員増加", "stats.items.5.unit": "%",
@@ -1485,9 +1485,9 @@ const I18N = {
     "hero.title": "A New Standard<br><em>in Ticket Sales</em>",
     "hero.sub": "From exhibitions to K-POP and Japan live concerts.<br>With Qoo10, you reach more audiences.",
     "stats.label": "Numbers", "stats.title": "Qoo10<br><em>by the Numbers</em>", "stats.sub": "A proven platform with a track record you can trust",
-    "stats.items.0.lead": "Founded", "stats.items.0.unit": "(June)",
+    "stats.items.0.lead": "Founded", "stats.items.0.unit_mid": "", "stats.items.0.unit": "(June)",
     "stats.items.1.lead": "Total Members", "stats.items.1.unit": "0K+",
-    "stats.items.2.lead": "Listed Sellers", "stats.items.2.unit": "0K+",
+    "stats.items.2.lead": "Listed Sellers", "stats.items.2.unit_mid": "K", "stats.items.2.unit": "stores+",
     "stats.items.3.lead": "Entertainment Items", "stats.items.3.unit": "0K+",
     "stats.items.4.lead": "Annual Sales Growth", "stats.items.4.unit": "%",
     "stats.items.5.lead": "Annual Member Growth", "stats.items.5.unit": "%",
