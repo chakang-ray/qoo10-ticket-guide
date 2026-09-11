@@ -1577,20 +1577,9 @@ function runCountsInSlide(slideEl) {
 }
 
 // ----------------------------------------------------------------
-// Swiper
+// Swiper (initialized inside DOMContentLoaded after applyConfig)
 // ----------------------------------------------------------------
-const statsSwiper = new Swiper('.statsSlider__swiper', {
-  loop: true, speed: 650,
-  slidesPerView: 'auto', centeredSlides: true, spaceBetween: -50,
-  grabCursor: true,
-  autoplay: { delay: 2800, disableOnInteraction: false, pauseOnMouseEnter: true },
-  pagination: { el: '.statsSlider__pagination', clickable: true },
-  navigation: { nextEl: '.statsSlider__nav--next', prevEl: '.statsSlider__nav--prev' },
-  on: {
-    init()  { runCountsInSlide(this.slides[this.activeIndex]); },
-    slideChangeTransitionStart() { runCountsInSlide(this.slides[this.activeIndex]); }
-  }
-});
+let statsSwiper;
 
 // ----------------------------------------------------------------
 // Scroll reveal
@@ -1719,6 +1708,18 @@ function initHistoryTabs() {
 document.addEventListener('DOMContentLoaded', () => {
   applyConfig();
   applyLang('ja');
+  statsSwiper = new Swiper('.statsSlider__swiper', {
+    loop: true, speed: 650,
+    slidesPerView: 'auto', centeredSlides: true, spaceBetween: -50,
+    grabCursor: true,
+    autoplay: { delay: 2800, disableOnInteraction: false, pauseOnMouseEnter: true },
+    pagination: { el: '.statsSlider__pagination', clickable: true },
+    navigation: { nextEl: '.statsSlider__nav--next', prevEl: '.statsSlider__nav--prev' },
+    on: {
+      init()  { runCountsInSlide(this.slides[this.activeIndex]); },
+      slideChangeTransitionStart() { runCountsInSlide(this.slides[this.activeIndex]); }
+    }
+  });
   initReveal('.strength-card', 120);
   initReveal('.category-card', 100);
   initHistoryTabs();
