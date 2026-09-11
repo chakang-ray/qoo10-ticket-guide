@@ -1054,7 +1054,7 @@ a { text-decoration: none; color: inherit; }
             <article class="statsCard statsCard--5">
               <div class="statsCard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
               <p class="statsCard__value statsCard__value--row">
-                <span class="statsCard__num statsCard__num--range js-stat" data-stat-key="salesGrowth">—</span><span class="statsCard__unit">%</span>
+                <span class="statsCard__num statsCard__num--range js-count js-stat" data-stat-key="salesGrowth">—</span><span class="statsCard__unit">%</span>
               </p>
               <p class="statsCard__lead" data-i18n="stats.items.4.lead">연간 매출 성장</p>
             </article>
@@ -1084,7 +1084,7 @@ a { text-decoration: none; color: inherit; }
             <article class="statsCard statsCard--3">
               <div class="statsCard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
               <p class="statsCard__value statsCard__value--row">
-                <span class="statsCard__num js-count js-stat" data-stat-key="youthRatio" data-to="0">—</span><span class="statsCard__unit">%</span>
+                <span class="statsCard__unit" data-i18n="stats.items.7.prefix">約</span><span class="statsCard__num js-count js-stat" data-stat-key="youthRatio" data-to="0">—</span><span class="statsCard__unit">%</span>
               </p>
               <p class="statsCard__lead" data-i18n="stats.items.7.lead">10대~30대 회원 비율</p>
             </article>
@@ -1405,7 +1405,7 @@ const CONFIG = {
     shops: '24.6',
     entertainItems: 50,
     salesGrowth: '20〜40',
-    memberGrowth: 30,
+    memberGrowth: '20〜30',
     kpopRanking: 1,
     youthRatio: 70
   },
@@ -1434,7 +1434,7 @@ const I18N = {
     "stats.items.4.lead": "연간 매출 성장", "stats.items.4.unit": "%",
     "stats.items.5.lead": "연간 회원 증가", "stats.items.5.unit": "%",
     "stats.items.6.lead": "일본 EC KPOP 판매율", "stats.items.6.unit": "위",
-    "stats.items.7.lead": "10대~30대 회원 비율", "stats.items.7.unit": "%",
+    "stats.items.7.lead": "10대~30대 회원 비율", "stats.items.7.unit": "%", "stats.items.7.prefix": "약 ",
     "strength.label": "Why Qoo10", "strength.title": "선택해야 할<br><em>4가지 이유</em>", "strength.sub": "Qoo10이 티켓 파트너로서 제공하는 가치",
     "strength.items.0.title": "신뢰와 플랫폼 파워", "strength.items.0.desc": "오랜 운영 역사와 수백만 회원을 보유한 검증된 플랫폼. 메이저 공연·전시 주최사도 안심하고 맡길 수 있는 신뢰 기반을 갖추고 있습니다.",
     "strength.items.1.title": "풀스케일 프로모션 지원", "strength.items.1.desc": "공연별 전용 페이지 개설부터 회원 대상 메일·푸시 발송, Qoo10 공식 SNS 노출, 일본 현지 스튜디오를 활용한 영상 송출·라이브 스트리밍, 오프라인 스폰서십 유치, 콘텐츠 마케팅까지 — 하나의 파트너십으로 모든 프로모션을 커버합니다.<div class=\"strength-tags\"><span class=\"strength-tag\">📧 메일·푸시 발송</span><span class=\"strength-tag\">📱 Qoo10 공식 SNS</span><span class=\"strength-tag\">🎥 스튜디오·라이브</span><span class=\"strength-tag\">🤝 스폰서십 유치</span><span class=\"strength-tag\">🎬 콘텐츠 마케팅</span></div>",
@@ -1463,7 +1463,7 @@ const I18N = {
     "stats.items.4.lead": "年間売上成長", "stats.items.4.unit": "%",
     "stats.items.5.lead": "年間会員増加", "stats.items.5.unit": "%",
     "stats.items.6.lead": "日本EC KPOP販売率", "stats.items.6.unit": "位",
-    "stats.items.7.lead": "10代〜30代会員比率", "stats.items.7.unit": "%",
+    "stats.items.7.lead": "10代〜30代会員比率", "stats.items.7.unit": "%", "stats.items.7.prefix": "約",
     "strength.label": "Why Qoo10", "strength.title": "選ぶべき<br><em>4つの理由</em>", "strength.sub": "チケットパートナーとしてQoo10が提供する価値",
     "strength.items.0.title": "信頼とプラットフォームパワー", "strength.items.0.desc": "長年の運営実績と数百万の会員を擁するプラットフォーム。大手公演・展示の主催者も安心して任せられる信頼基盤があります。",
     "strength.items.1.title": "フルスケールプロモーション支援", "strength.items.1.desc": "公演ごとの専用ページ開設から、会員向けメール・プッシュ配信、Qoo10公式SNS露出、日本現地スタジオを活用した映像配信・ライブ配信、オフラインスポンサー誘致、コンテンツマーケティングまで — ひとつのパートナーシップですべてのプロモーションをカバーします。<div class=\"strength-tags\"><span class=\"strength-tag\">📧 メール・プッシュ配信</span><span class=\"strength-tag\">📱 Qoo10公式SNS</span><span class=\"strength-tag\">🎥 スタジオ・ライブ配信</span><span class=\"strength-tag\">🤝 スポンサー誘致</span><span class=\"strength-tag\">🎬 コンテンツマーケティング</span></div>",
@@ -1492,7 +1492,7 @@ const I18N = {
     "stats.items.4.lead": "Annual Sales Growth", "stats.items.4.unit": "%",
     "stats.items.5.lead": "Annual Member Growth", "stats.items.5.unit": "%",
     "stats.items.6.lead": "Japan EC KPOP Rank", "stats.items.6.unit": "st",
-    "stats.items.7.lead": "Members Aged 10s–30s", "stats.items.7.unit": "%",
+    "stats.items.7.lead": "Members Aged 10s–30s", "stats.items.7.unit": "%", "stats.items.7.prefix": "Approx. ",
     "strength.label": "Why Qoo10", "strength.title": "4 Reasons<br><em>to Choose Us</em>", "strength.sub": "The value Qoo10 brings as your ticket partner",
     "strength.items.0.title": "Trust & Platform Power", "strength.items.0.desc": "A proven platform with years of operation and millions of members. Major concert and exhibition organizers trust us to deliver.",
     "strength.items.1.title": "Full-Scale Promotion Support", "strength.items.1.desc": "From a dedicated event page to member email & push campaigns, Qoo10 official SNS exposure, on-site studio video streaming & live broadcasts, offline sponsorship recruitment, and content marketing — one partnership covers every promotional angle.<div class=\"strength-tags\"><span class=\"strength-tag\">📧 Email &amp; Push</span><span class=\"strength-tag\">📱 Official SNS</span><span class=\"strength-tag\">🎥 Studio &amp; Live</span><span class=\"strength-tag\">🤝 Sponsorship</span><span class=\"strength-tag\">🎬 Content Marketing</span></div>",
@@ -1545,6 +1545,19 @@ function applyLang(lang) {
 // ----------------------------------------------------------------
 function animateCount(el, duration = 900) {
   const raw = el.dataset.to || '0';
+  if (raw.includes('〜')) {
+    const [a, b] = raw.split('〜').map(Number);
+    const start = performance.now();
+    el.textContent = '0〜0';
+    function tickRange(now) {
+      const t = Math.min(1, (now - start) / duration);
+      const ease = 1 - Math.pow(1 - t, 3);
+      el.textContent = `${Math.round(a * ease)}〜${Math.round(b * ease)}`;
+      if (t < 1) requestAnimationFrame(tickRange);
+    }
+    requestAnimationFrame(tickRange);
+    return;
+  }
   const to = Number(raw);
   if (!to) { el.textContent = raw; return; }
   const dec = raw.includes('.') ? raw.split('.')[1].length : 0;
