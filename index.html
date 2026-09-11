@@ -1010,7 +1010,7 @@ a { text-decoration: none; color: inherit; }
             <article class="statsCard statsCard--1">
               <div class="statsCard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
               <p class="statsCard__value">
-                <span class="statsCard__numline"><span class="statsCard__num js-stat" data-stat-key="founded">—</span><span class="statsCard__unit--sm" data-i18n="stats.items.0.unit_mid">년</span></span>
+                <span class="statsCard__numline"><span class="statsCard__num js-count js-stat" data-stat-key="founded">—</span><span class="statsCard__unit--sm" data-i18n="stats.items.0.unit_mid">년</span></span>
                 <span class="statsCard__unit" data-i18n="stats.items.0.unit">6월</span>
               </p>
               <p class="statsCard__lead" data-i18n="stats.items.0.lead">설립</p>
@@ -1032,7 +1032,7 @@ a { text-decoration: none; color: inherit; }
             <article class="statsCard statsCard--3">
               <div class="statsCard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1-5h16l1 5M3 9a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0M5 9v11h14V9M9 14h6"/></svg></div>
               <p class="statsCard__value">
-                <span class="statsCard__numline"><span class="statsCard__num js-stat" data-stat-key="shops">—</span><span class="statsCard__unit--sm" data-i18n="stats.items.2.unit_mid">만</span></span>
+                <span class="statsCard__numline"><span class="statsCard__num js-count js-stat" data-stat-key="shops">—</span><span class="statsCard__unit--sm" data-i18n="stats.items.2.unit_mid">만</span></span>
                 <span class="statsCard__unit" data-i18n="stats.items.2.unit">점포+</span>
               </p>
               <p class="statsCard__lead" data-i18n="stats.items.2.lead">출점 셀러수</p>
@@ -1064,7 +1064,7 @@ a { text-decoration: none; color: inherit; }
             <article class="statsCard statsCard--1">
               <div class="statsCard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></div>
               <p class="statsCard__value statsCard__value--row">
-                <span class="statsCard__num statsCard__num--range js-stat" data-stat-key="memberGrowth">—</span><span class="statsCard__unit">%</span>
+                <span class="statsCard__num statsCard__num--range js-count js-stat" data-stat-key="memberGrowth">—</span><span class="statsCard__unit">%</span>
               </p>
               <p class="statsCard__lead" data-i18n="stats.items.5.lead">연간 회원 증가</p>
             </article>
@@ -1544,14 +1544,17 @@ function applyLang(lang) {
 // Count-up
 // ----------------------------------------------------------------
 function animateCount(el, duration = 900) {
-  const to = Number(el.dataset.to || 0);
-  if (!to) { el.textContent = el.dataset.to || '0'; return; }
+  const raw = el.dataset.to || '0';
+  const to = Number(raw);
+  if (!to) { el.textContent = raw; return; }
+  const dec = raw.includes('.') ? raw.split('.')[1].length : 0;
   const start = performance.now();
-  el.textContent = '0';
+  el.textContent = dec ? (0).toFixed(dec) : '0';
   function tick(now) {
     const t = Math.min(1, (now - start) / duration);
     const ease = 1 - Math.pow(1 - t, 3);
-    el.textContent = Math.round(to * ease).toLocaleString();
+    const val = to * ease;
+    el.textContent = dec ? val.toFixed(dec) : Math.round(val).toLocaleString();
     if (t < 1) requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
