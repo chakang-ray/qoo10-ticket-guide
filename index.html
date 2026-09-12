@@ -647,6 +647,132 @@ a { text-decoration: none; color: inherit; }
 .footer-copy { font-size: 12px; color: var(--text-dim); }
 
 /* =========================================
+   DEMO SECTION (ticket experience)
+   ========================================= */
+.demo-section { padding: 10px 40px 80px; display: flex; justify-content: center; }
+.demo-wrap { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+
+/* Step bar */
+.demo-steps {
+  display: flex; align-items: center; gap: 0;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 99px; padding: 5px 16px;
+  font-size: 11px; color: var(--text-muted);
+  flex-wrap: wrap; justify-content: center;
+}
+.demo-step {
+  padding: 4px 12px; border-radius: 99px;
+  white-space: nowrap; transition: all 0.35s;
+}
+.demo-step.active { background: var(--gradient); color: #fff; font-weight: 700; }
+.demo-step-sep { color: var(--text-dim); font-size: 10px; margin: 0 1px; }
+
+/* Phone frame */
+.phone-frame {
+  width: 320px; flex-shrink: 0;
+  background: #1a1123; border-radius: 48px; padding: 14px;
+  box-shadow:
+    0 0 0 2px #2a1f3d,
+    0 0 0 5px #0f0a1a,
+    0 40px 80px rgba(0,0,0,0.65),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.phone-notch {
+  width: 110px; height: 26px;
+  background: #0f0a1a; border-radius: 0 0 16px 16px;
+  margin: 0 auto 10px;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.phone-notch::before {
+  content: ''; width: 10px; height: 10px; border-radius: 50%;
+  background: #1a1123; border: 2px solid #2a1f3d;
+}
+.phone-screen {
+  width: 100%; height: 600px;
+  overflow: hidden; border-radius: 34px;
+  background: #fff; position: relative;
+}
+.phone-home {
+  width: 130px; height: 5px;
+  background: rgba(255,255,255,0.18); border-radius: 99px;
+  margin: 11px auto 0;
+}
+
+/* Individual screens */
+.demo-screen {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  opacity: 0; transform: translateX(40px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none; background: #fff;
+}
+.demo-screen.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+.demo-screen.exit   { opacity: 0; transform: translateX(-40px); }
+
+.screen-scroll {
+  width: 100%; height: 100%;
+  overflow-y: auto; overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; position: relative;
+}
+.screen-scroll::-webkit-scrollbar { display: none; }
+.screen-scroll img { width: 100%; height: auto; display: block; }
+
+/* Tap hint overlays on images */
+.tap-hint {
+  position: absolute; left: 0; width: 100%; cursor: pointer; z-index: 10;
+}
+.tap-hint-badge {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  background: rgba(232,0,61,0.92); color: #fff;
+  font-size: 11px; font-weight: 700; padding: 5px 11px; border-radius: 99px;
+  animation: tapPulse 1.3s ease-in-out infinite;
+  font-family: 'Noto Sans JP', sans-serif; pointer-events: none;
+  white-space: nowrap;
+}
+@keyframes tapPulse {
+  0%,100% { opacity:1; transform: translateY(-50%) scale(1); }
+  50%      { opacity:.65; transform: translateY(-50%) scale(0.93); }
+}
+
+/* Floating action bar (bottom of phone) */
+.screen-action {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 10px 14px 14px;
+  background: linear-gradient(to top, rgba(255,255,255,1) 65%, rgba(255,255,255,0));
+  z-index: 20;
+}
+.screen-action-btn {
+  width: 100%; padding: 14px; border: none; border-radius: 10px;
+  background: #e8003d; color: #fff;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif; letter-spacing: 0.02em;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.screen-action-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.screen-action-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; opacity: 1; }
+
+/* Reset / info */
+.demo-restart {
+  background: none; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 99px; padding: 8px 20px;
+  color: var(--text-muted); font-size: 13px; cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif; transition: all 0.2s;
+  display: none;
+}
+.demo-restart:hover { color: #fff; border-color: rgba(255,255,255,0.35); }
+.demo-restart.visible { display: block; }
+.demo-info { font-size: 11px; color: var(--text-dim); text-align: center; line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .demo-section { padding: 8px 18px 56px; }
+  .phone-frame { width: 290px; }
+  .phone-screen { height: 560px; }
+}
+
+/* =========================================
    SNS SECTION
    ========================================= */
 .sns-section {
@@ -960,6 +1086,7 @@ a { text-decoration: none; color: inherit; }
     <a class="mobile-nav__link" href="#HISTORY" data-i18n="nav.history">히스토리</a>
     <a class="mobile-nav__link" href="#STRENGTH" data-i18n="nav.strength">강점</a>
     <a class="mobile-nav__link" href="#CATEGORY" data-i18n="nav.category">카테고리</a>
+    <a class="mobile-nav__link" href="#DEMO" data-i18n="nav.demo">体験</a>
     <a class="mobile-nav__link" href="#CONTACT" data-i18n="nav.contact">문의</a>
   </div>
   <div class="mobile-lang">
@@ -1341,6 +1468,101 @@ a { text-decoration: none; color: inherit; }
       </ul>
     </div>
 
+    <!-- DEMO -->
+    <span class="section-anchor" id="DEMO"></span>
+    <div class="section-heading">
+      <p class="section-label" data-i18n="demo.label">Experience</p>
+      <h2 class="section-title" data-i18n="demo.title">チケット応募を<br><em>体験する</em></h2>
+      <p class="section-sub" data-i18n="demo.sub">実際のQoo10チケット応募フローをご体験いただけます</p>
+    </div>
+    <section class="demo-section">
+      <div class="demo-wrap">
+
+        <!-- Step indicator -->
+        <div class="demo-steps" id="demoSteps">
+          <span class="demo-step active" data-step="1">チケット選択</span>
+          <span class="demo-step-sep">›</span>
+          <span class="demo-step" data-step="2">申込情報入力</span>
+          <span class="demo-step-sep">›</span>
+          <span class="demo-step" data-step="3">決済方法の選択</span>
+          <span class="demo-step-sep">›</span>
+          <span class="demo-step" data-step="4">申込完了</span>
+        </div>
+
+        <!-- Phone frame -->
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+
+            <!-- Screen 1: Ticket list -->
+            <div class="demo-screen active" id="demoScreen1">
+              <div class="screen-scroll">
+                <div style="position:relative;">
+                  <img src="ticket-demo/1.jpg" alt="チケット選択">
+                  <div class="tap-hint" style="top:28%;height:17%;" onclick="demoGoTo(2)">
+                    <span class="tap-hint-badge">タップして応募 ▶</span>
+                  </div>
+                  <div class="tap-hint" style="top:46%;height:17%;" onclick="demoGoTo(2)">
+                    <span class="tap-hint-badge">タップして応募 ▶</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 2: Application form (empty → filled animation) -->
+            <div class="demo-screen" id="demoScreen2">
+              <div class="screen-scroll" id="formScroll">
+                <div style="position:relative;">
+                  <img src="ticket-demo/2.jpg" alt="申込情報入力" style="position:relative;z-index:1;display:block;">
+                  <img src="ticket-demo/3.jpg" id="formImgFilled" alt="申込情報入力（入力後）"
+                       style="position:absolute;top:0;left:0;width:100%;opacity:0;transition:opacity 0.7s ease;z-index:2;display:block;">
+                </div>
+              </div>
+              <div class="screen-action">
+                <button class="screen-action-btn" id="formNextBtn" onclick="demoGoTo(3)" disabled>次のステップへ →</button>
+              </div>
+            </div>
+
+            <!-- Screen 3: Payment method -->
+            <div class="demo-screen" id="demoScreen3">
+              <div class="screen-scroll">
+                <img src="ticket-demo/4.jpg" alt="決済方法の選択">
+              </div>
+              <div class="screen-action">
+                <button class="screen-action-btn" onclick="demoGoTo(4)">申込 →</button>
+              </div>
+            </div>
+
+            <!-- Screen 4: Confirm dialog -->
+            <div class="demo-screen" id="demoScreen4">
+              <div class="screen-scroll">
+                <img src="ticket-demo/5.jpg" alt="内容確認">
+              </div>
+              <div class="screen-action">
+                <button class="screen-action-btn" onclick="demoGoTo(5)">確定 →</button>
+              </div>
+            </div>
+
+            <!-- Screen 5: Complete -->
+            <div class="demo-screen" id="demoScreen5">
+              <div class="screen-scroll">
+                <img src="ticket-demo/6.jpg" alt="申込完了">
+              </div>
+              <div class="screen-action">
+                <button class="screen-action-btn"
+                        style="background:linear-gradient(135deg,#9333ea,#e8003d);"
+                        onclick="demoReset()">🎉 もう一度体験する</button>
+              </div>
+            </div>
+
+          </div><!-- /phone-screen -->
+          <div class="phone-home"></div>
+        </div><!-- /phone-frame -->
+
+        <p class="demo-info">実際のQoo10チケット応募画面をもとにした体験デモです</p>
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <span class="section-anchor" id="CONTACT"></span>
     <div class="section-heading">
@@ -1389,6 +1611,7 @@ a { text-decoration: none; color: inherit; }
     <a class="nav-btn" href="#STATS" data-i18n="nav.stats">実績</a>
     <a class="nav-btn" href="#STRENGTH" data-i18n="nav.strength">強み</a>
     <a class="nav-btn" href="#CATEGORY" data-i18n="nav.category">カテゴリー</a>
+    <a class="nav-btn" href="#DEMO" data-i18n="nav.demo">体験する</a>
     <a class="nav-btn" href="#CONTACT" data-i18n="nav.contact">お問い合わせ</a>
   </aside>
 </div><!-- /main-layout -->
@@ -1420,7 +1643,8 @@ const CONFIG = {
 // ----------------------------------------------------------------
 const I18N = {
   ko: {
-    "nav.stats": "실적", "nav.history": "히스토리", "nav.strength": "강점", "nav.category": "카테고리", "nav.contact": "문의",
+    "nav.stats": "실적", "nav.history": "히스토리", "nav.strength": "강점", "nav.category": "카테고리", "nav.demo": "체험", "nav.contact": "문의",
+    "demo.label": "Experience", "demo.title": "티켓 응모를<br><em>체험하기</em>", "demo.sub": "실제 Qoo10 티켓 응모 플로우를 체험해보세요",
     "history.label": "Stages", "history.title": "Qoo10이<br><em>함께한 무대들</em>", "history.sub": "판매·협찬·홍보 파트너십으로 함께한 모든 무대",
     "left.tagline": "티켓 판매의<br>새로운 기준", "left.tagline_sub": "함께라면 더 많은 관객에게 닿습니다",
     "hero.eyebrow": "TICKET PLAY GUIDE",
@@ -1449,7 +1673,8 @@ const I18N = {
     "footer.copy": "© Qoo10. All rights reserved."
   },
   ja: {
-    "nav.stats": "実績", "nav.history": "ヒストリー", "nav.strength": "強み", "nav.category": "カテゴリー", "nav.contact": "お問い合わせ",
+    "nav.stats": "実績", "nav.history": "ヒストリー", "nav.strength": "強み", "nav.category": "カテゴリー", "nav.demo": "体験する", "nav.contact": "お問い合わせ",
+    "demo.label": "Experience", "demo.title": "チケット応募を<br><em>体験する</em>", "demo.sub": "実際のQoo10チケット応募フローをご体験いただけます",
     "history.label": "Stages", "history.title": "Qoo10が<br><em>共にした舞台</em>", "history.sub": "販売・協賛・プロモーションとして共に歩んだすべての舞台",
     "left.tagline": "チケット販売の<br>新しいスタンダード", "left.tagline_sub": "より多くのお客様へ届けます",
     "hero.eyebrow": "TICKET PLAY GUIDE",
@@ -1478,7 +1703,8 @@ const I18N = {
     "footer.copy": "© Qoo10. All rights reserved."
   },
   en: {
-    "nav.stats": "Stats", "nav.history": "History", "nav.strength": "Strength", "nav.category": "Category", "nav.contact": "Contact",
+    "nav.stats": "Stats", "nav.history": "History", "nav.strength": "Strength", "nav.category": "Category", "nav.demo": "Try It", "nav.contact": "Contact",
+    "demo.label": "Experience", "demo.title": "Try the Ticket<br><em>Application Flow</em>", "demo.sub": "Experience the actual Qoo10 ticket application process",
     "history.label": "Stages", "history.title": "Stages We've<br><em>Shared Together</em>", "history.sub": "Every stage shared as a sales, sponsorship, or promotional partner",
     "left.tagline": "A New Standard<br>in Ticket Sales", "left.tagline_sub": "Reach more audiences with Qoo10",
     "hero.eyebrow": "TICKET PLAY GUIDE",
@@ -1611,7 +1837,7 @@ function initReveal(selector, stagger = 110) {
 function initMobileNav() {
   const mq = window.matchMedia('(max-width: 768px)');
   const links = Array.from(document.querySelectorAll('.mobile-nav__link'));
-  const secs = ['STATS','STRENGTH','CATEGORY','CONTACT']
+  const secs = ['STATS','STRENGTH','CATEGORY','DEMO','CONTACT']
     .map(id => ({ id:`#${id}`, el: document.getElementById(id) })).filter(s => s.el);
   function update() {
     if (!mq.matches) return;
@@ -1629,7 +1855,7 @@ function initRightNav() {
   const mq = window.matchMedia('(min-width: 769px)');
   const center = document.getElementById('panelCenter');
   const links = Array.from(document.querySelectorAll('.panel-right .nav-btn'));
-  const secs = ['STATS','STRENGTH','CATEGORY','CONTACT']
+  const secs = ['STATS','STRENGTH','CATEGORY','DEMO','CONTACT']
     .map(id => ({ id:`#${id}`, el: document.getElementById(id) })).filter(s => s.el);
   function update() {
     if (!mq.matches || !center) return;
@@ -1703,6 +1929,81 @@ function initHistoryTabs() {
 }
 
 // ----------------------------------------------------------------
+// Ticket Demo
+// ----------------------------------------------------------------
+let demoCurrentScreen = 1;
+let demoFormTimer = null;
+
+function demoGoTo(n) {
+  const curr = document.getElementById(`demoScreen${demoCurrentScreen}`);
+  const next = document.getElementById(`demoScreen${n}`);
+  if (!curr || !next || demoCurrentScreen === n) return;
+
+  curr.classList.remove('active');
+  curr.classList.add('exit');
+  setTimeout(() => curr.classList.remove('exit'), 420);
+
+  next.classList.add('active');
+  demoCurrentScreen = n;
+
+  // Step indicator
+  const stepMap = { 1:1, 2:2, 3:3, 4:3, 5:4 };
+  const active = stepMap[n] || 1;
+  document.querySelectorAll('.demo-step').forEach(el => {
+    el.classList.toggle('active', parseInt(el.dataset.step) === active);
+  });
+
+  // Scroll to top
+  const scroll = next.querySelector('.screen-scroll');
+  if (scroll) scroll.scrollTop = 0;
+
+  // Screen-specific logic
+  if (n === 2) startFormFill();
+}
+
+function startFormFill() {
+  const filled = document.getElementById('formImgFilled');
+  const btn    = document.getElementById('formNextBtn');
+  if (!filled || !btn) return;
+  filled.style.opacity = '0';
+  btn.disabled = true;
+  clearTimeout(demoFormTimer);
+  demoFormTimer = setTimeout(() => {
+    filled.style.opacity = '1';
+    setTimeout(() => { btn.disabled = false; }, 750);
+  }, 1800);
+}
+
+function demoReset() {
+  clearTimeout(demoFormTimer);
+  const filled = document.getElementById('formImgFilled');
+  if (filled) filled.style.opacity = '0';
+  const btn = document.getElementById('formNextBtn');
+  if (btn) btn.disabled = true;
+
+  const curr = document.getElementById(`demoScreen${demoCurrentScreen}`);
+  if (curr) {
+    curr.classList.remove('active');
+    curr.classList.add('exit');
+    setTimeout(() => curr.classList.remove('exit'), 420);
+  }
+  demoCurrentScreen = 1;
+  const s1 = document.getElementById('demoScreen1');
+  if (s1) s1.classList.add('active');
+  document.querySelectorAll('.demo-step').forEach(el => {
+    el.classList.toggle('active', el.dataset.step === '1');
+  });
+}
+
+function initDemo() {
+  // Pre-load images 2-6 so transitions are instant
+  [2,3,4,5,6].forEach(i => {
+    const img = new Image();
+    img.src = `ticket-demo/${i}.jpg`;
+  });
+}
+
+// ----------------------------------------------------------------
 // Boot
 // ----------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
@@ -1727,6 +2028,7 @@ document.addEventListener('DOMContentLoaded', () => {
   applyImagePos();
   initMobileNav();
   initRightNav();
+  initDemo();
 });
 </script>
 </body>
